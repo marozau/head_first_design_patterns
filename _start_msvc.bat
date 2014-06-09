@@ -1,1 +1,1 @@
-"_build_Debug_64/head_first_design_patterns.sln" 
+"_build_Debug_32/head_first_design_patterns.sln" 
