@@ -40,5 +40,26 @@ namespace hfdp
 		{
 			std::cout << "audio system: VOLUME DOWN" << std::endl;
 		}
+		//
+		void ceiling_fan::high()
+		{
+			speed_ = HIGH;
+		}
+		void ceiling_fan::medium()
+		{
+			speed_ = MEDIUM;
+		}
+		void ceiling_fan::low()
+		{
+			speed_ = LOW;
+		}
+		void ceiling_fan::off()
+		{
+			speed_ = OFF;
+		}
+		const ceiling_fan::speed ceiling_fan::get_speed( ) const
+		{
+			return speed_;
+		}
 	}
 }

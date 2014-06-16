@@ -4,6 +4,15 @@ namespace hfdp
 {
 	namespace command
 	{
+		empty_command::~empty_command()
+		{
+		}
+		void empty_command::execute( )
+		{
+		}
+		void empty_command::undo( )
+		{		
+		}
 		garage_lights_on::garage_lights_on( const garage_lights_ptr lights )
 			: lights_( lights )
 		{
@@ -82,6 +91,38 @@ namespace hfdp
 		void audio_system_volume_up::undo( )
 		{
 			audio_->volume_down( );
+		}
+		//
+		ceiling_fan_high_command::ceiling_fan_high_command( const ceiling_fan_ptr fan )
+			: ceiling_fan_( fan )
+		{
+		}
+		ceiling_fan_high_command::~ceiling_fan_high_command()
+		{
+		}
+		//
+		void ceiling_fan_high_command::execute()
+		{
+			prev_speed_ = ceiling_fan_->get_speed();
+			ceiling_fan_->high();
+		}
+		void ceiling_fan_high_command::undo()
+		{
+			switch ( prev_speed_ )
+			{
+			case ceiling_fan::OFF:
+				ceiling_fan_->off();
+				break;
+			case ceiling_fan::LOW:
+				ceiling_fan_->low();
+				break;
+			case ceiling_fan::MEDIUM:
+				ceiling_fan_->medium();
+				break;
+			case ceiling_fan::HIGH:
+				ceiling_fan_->high();
+				break;
+			};
 		}
 	}
 }

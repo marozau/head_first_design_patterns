@@ -32,6 +32,29 @@ namespace hfdp
 			void volume_down();
 		};
 		typedef std::shared_ptr< audio_system > audio_system_ptr;
+		//
+		class ceiling_fan
+		{
+		public:
+			enum speed
+			{
+				HIGH,
+				MEDIUM,
+				LOW,
+				OFF
+			};
+
+		private:
+			speed speed_ = OFF;
+
+		public:		
+			void high();
+			void medium();
+			void low();
+			void off();
+			const speed get_speed() const;
+		};
+		typedef std::shared_ptr< ceiling_fan > ceiling_fan_ptr;
 	}
 }
 

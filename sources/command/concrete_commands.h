@@ -8,6 +8,14 @@ namespace hfdp
 {
 	namespace command
 	{
+		class empty_command : public command_interface
+		{
+		public:
+			virtual ~empty_command();
+			//
+			virtual void execute( );
+			virtual void undo( );
+		};
 		class garage_lights_on : public command_interface
 		{
 			garage_lights_ptr lights_;
@@ -64,6 +72,18 @@ namespace hfdp
 			//
 			virtual void execute( );
 			virtual void undo( );
+		};
+		class ceiling_fan_high_command : public command_interface
+		{
+			ceiling_fan::speed prev_speed_ = ceiling_fan::OFF;
+			ceiling_fan_ptr ceiling_fan_;
+
+		public:
+			explicit ceiling_fan_high_command( const ceiling_fan_ptr fan );
+			virtual ~ceiling_fan_high_command();
+			//
+			virtual void execute();
+			virtual void undo();
 		};
 	}
 }
